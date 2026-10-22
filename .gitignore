@@ -1,0 +1,23 @@
+# Local build products and release packages (test fixtures stay tracked).
+.build/
+.swiftpm/
+work/
+dist/
+*.app/
+*.dSYM/
+.DS_Store
+xcuserdata/
+*.xcuserstate
+
+# Local signing material and credentials must never be committed.
+.env
+.env.*
+!.env.example
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile
+
+# Local implementation notes, not part of the public project.
+IMPLEMENTATION_PLAN.md
+docs/*_PLAN.md

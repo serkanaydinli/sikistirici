@@ -1,0 +1,1 @@
+module CArchivePreview { header "CArchivePreview.h" export * }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Sıkıştırıcı Önizleme</string>
+	<key>CFBundleExecutable</key>
+	<string>SikistiriciPreview</string>
+	<key>CFBundleIdentifier</key>
+	<string>local.sikistirici.app.preview</string>
+	<key>CFBundleName</key>
+	<string>Sıkıştırıcı Önizleme</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.4.5</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>10</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>QLSupportedContentTypes</key>
+			<array>
+				<string>public.zip-archive</string>
+				<string>org.7-zip.7-zip-archive</string>
+				<string>com.rarlab.rar-archive</string>
+				<string>public.tar-archive</string>
+				<string>org.gnu.gnu-zip-archive</string>
+			</array>
+			<key>QLSupportsSearchableItems</key>
+			<false/>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.quicklook.preview</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>SikistiriciPreviewController</string>
+	</dict>
+	<key>XPCService</key>
+	<dict>
+		<key>RunLoopType</key>
+		<string>_NSApplicationMain</string>
+		<key>ServiceType</key>
+		<string>Application</string>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 Serkan Aydınlı. MIT License.</string>
+</dict>
+</plist>

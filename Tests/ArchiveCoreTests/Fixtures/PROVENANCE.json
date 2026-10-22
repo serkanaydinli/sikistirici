@@ -1,0 +1,37 @@
+[
+  {
+    "file": "test_read_format_rar5_compressed.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_compressed.rar.uu",
+    "sha256": "68f9d7e2662cd5bc5607ba9c6bf1edbf121cf3b08011a7d8643091791750a7c8"
+  },
+  {
+    "file": "test_read_format_rar5_encrypted_filenames.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_encrypted_filenames.rar.uu",
+    "sha256": "b2b98004c9cbf4f2a4000380ad47a16dea99f2d50835b1602c40d724eb82c300"
+  },
+  {
+    "file": "test_read_format_rar_encryption_header.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar_encryption_header.rar.uu",
+    "sha256": "67fa99d6f1d07d6dce56da85d22cd6271c16fbc7aad5efc6046b30425cc799b0"
+  },
+  {
+    "file": "test_read_format_rar5_multiarchive_solid.part01.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_multiarchive_solid.part01.rar.uu",
+    "sha256": "6607f575dad0b28aaeb02298b4c04a0e5a606e77f952127d2d9e346f60616a26"
+  },
+  {
+    "file": "test_read_format_rar5_multiarchive_solid.part02.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_multiarchive_solid.part02.rar.uu",
+    "sha256": "eb119ed53511905ca6f1844c164b6246d8fcdca0d1f38a8e3fb13da9c0932fbd"
+  },
+  {
+    "file": "test_read_format_rar5_multiarchive_solid.part03.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_multiarchive_solid.part03.rar.uu",
+    "sha256": "e814c3dbdaf3f613fd25c840065d25543f31e6b6c95505e7e25f47867a4812bd"
+  },
+  {
+    "file": "test_read_format_rar5_multiarchive_solid.part04.rar",
+    "source": "https://raw.githubusercontent.com/libarchive/libarchive/03b426003adf12c1eb4c34e72bedb4c2bf1ba8d3/libarchive/test/test_read_format_rar5_multiarchive_solid.part04.rar.uu",
+    "sha256": "9ff5a4e633b0e82a2ce6e022f3d389654dbb77a0906a34f107676d6673989c9f"
+  }
+]
