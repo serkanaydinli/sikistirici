@@ -17,3 +17,9 @@ SIKISTIRICI_APP_PATH='/tam/yol/Sıkıştırıcı.app' ./scripts/build-app.sh
 Otomatik uygulama güncellemesi bu düzeltmenin kapsamına eklenmedi; mevcut manuel kurulum korunur. İleride güncelleyici eklenirse güncelleme paketlerinin imzaları doğrulanmalıdır.
 
 Kaynaklar: [Apple — Notarizing macOS software](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution), [Apple — Resolving common notarization issues](https://developer.apple.com/documentation/security/resolving-common-notarization-issues).
+
+## PKG kurulum dosyası
+
+`./scripts/build-installer.sh /tam/yol/Sıkıştırıcı.app /tam/yol/Sikistirici.pkg` logo ve geliştirici bilgili bir kurulum paketi üretir. Paket `/Applications` konumunu kullanır; kullanıcı ana dizinine veya taşınmış uygulama kopyalarına kurulum yapmaz. Gömülü uygulama imzası derleme aşamasındaki imzadır. PKG kabı varsayılan olarak imzasızdır.
+
+Herkese yönelik imzalı PKG dağıtımı için ayrıca **Developer ID Installer** sertifikası ve `productsign` gerekir; bu sertifika **Developer ID Application** sertifikasından farklıdır. Mevcut makinede bu işlem doğrulanmadı. `notarize-app.sh` yalnız uygulama ZIP'i içindir; PKG noter onayı tamamlanmış gibi değerlendirilmemelidir.

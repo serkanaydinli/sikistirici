@@ -10,4 +10,6 @@ Geliştirici: **Serkan Aydınlı**.
 
 Paket: Apple Silicon, macOS 14+. Yerel ad-hoc imzalı beta; Apple Developer ID/notarization onayı yoktur. Uygulama sürümü 0.4.5, build 10.
 
-Yayın dosyaları: `Sikistirici-0.4.5-macOS-arm64.zip`, `Sikistirici-0.4.5-source.zip` ve `SHA256SUMS-0.4.5.txt`.
+Logo ve geliştirici bilgisi içeren macOS `.pkg` kurulum dosyası da eklendi. Uygulamayı `/Applications` klasörüne kurar; Apple Silicon ve macOS 14+ gerektirir. Kurulum öncesinde uygulamayı kapatın. PKG, Developer ID Installer ile imzalanmamıştır.
+
+Yayın dosyaları: `Sikistirici-0.4.5-macOS-arm64.pkg`, `Sikistirici-0.4.5-macOS-arm64.zip`, `Sikistirici-0.4.5-source.zip` ve `SHA256SUMS-0.4.5.txt`.

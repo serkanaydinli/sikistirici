@@ -6,7 +6,7 @@
 
 **Geliştirici: Serkan Aydınlı** · **0.4.5 beta** · **MIT**
 
-[**macOS uygulamasını indir ↓**](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.5/Sikistirici-0.4.5-macOS-arm64.zip) · [Tüm sürümler](https://github.com/serkanaydinli/sikistirici/releases) · [Hata bildir](https://github.com/serkanaydinli/sikistirici/issues)
+[**macOS kurulum dosyasını indir ↓**](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.5/Sikistirici-0.4.5-macOS-arm64.pkg) · [ZIP indir](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.5/Sikistirici-0.4.5-macOS-arm64.zip) · [Tüm sürümler](https://github.com/serkanaydinli/sikistirici/releases) · [Hata bildir](https://github.com/serkanaydinli/sikistirici/issues)
 
 Apple Silicon · macOS 14+ · SwiftUI · ZIP / 7z / RAR
 
@@ -30,7 +30,9 @@ Dosya işlemleri Mac üzerinde yapılır. Bulut hesabı gerekmez. RAR oluşturul
 - Kaynaktan derleme için Swift 6.0+ içeren Xcode ve seçili Xcode geliştirici araçları.
 - Intel Mac için hazır paket ve test edilmiş destek yoktur; paketlenen libarchive arm64'tür.
 
-Hazır uygulama ZIP'ini açıp `Sıkıştırıcı.app` dosyasını Uygulamalar klasörüne taşı. Bu beta paket **ad-hoc imzalıdır; Apple Developer ID / notarization onayı yoktur**. İndirilen uygulama macOS tarafından engellenebilir. İmzalama durumu [dağıtım belgesinde](docs/DISTRIBUTION.md) açıklanır.
+**PKG kurulumu:** İndirilen `.pkg` dosyasını açıp macOS Kurulum ekranını takip et. Paket uygulamayı `/Applications/Sıkıştırıcı.app` konumuna kurar; yönetici izni isteyebilir. Kurulum öncesinde açık Sıkıştırıcı uygulamasını kapat. Aynı konumdaki eski sürüm güncellenir; daha yeni bir sürüm varsa eski sürüm üzerine kurulmaz. Kişisel arşivler paketin kapsamı dışındadır.
+
+**ZIP ile kurulum:** Hazır uygulama ZIP'ini açıp `Sıkıştırıcı.app` dosyasını Uygulamalar klasörüne taşı. Bu beta paket **ad-hoc imzalıdır; Apple Developer ID / notarization onayı yoktur**. PKG ayrıca Developer ID Installer sertifikasıyla imzalanmamıştır. İndirilen kurulum dosyası veya uygulama macOS tarafından engellenebilir. İmzalama durumu [dağıtım belgesinde](docs/DISTRIBUTION.md) açıklanır.
 
 ## Kaynaktan derleme
 
@@ -48,6 +50,14 @@ open 'dist/Sıkıştırıcı.app'
 Betik uygulamayı, Finder ve Quick Look uzantılarını derler; yerel imzaları doğrular. Sonuç `dist/Sıkıştırıcı.app`, paketleme önbelleği `.build/package/` içindedir. Bu klasörler Git'e eklenmez. Normal derleme ağ bağlantısı veya Apple Developer sertifikası istemez; gerekli motor, statik kütüphane ve görseller depodadır.
 
 Çıktıları başka konuma almak için `SIKISTIRICI_BUILD_DIR` ve `SIKISTIRICI_APP_PATH` değişkenlerini mutlak yollarla ayarla. Developer ID ile dağıtım için [DISTRIBUTION.md](docs/DISTRIBUTION.md).
+
+Kurulum paketi üretmek için:
+
+```sh
+./scripts/build-installer.sh "$PWD/dist/Sıkıştırıcı.app" "$PWD/dist/Sikistirici.pkg"
+```
+
+Betik macOS'un `pkgbuild`/`productbuild` araçlarını kullanır. Oluşan imzasız pakette logo ve geliştirici bilgisi içeren karşılama ekranı, Apple Silicon/macOS 14+ gereksinimleri ve uygulama içeriği bulunur. Paket ek yetkili kurulum betikleri çalıştırmaz; varsayılan arşiv ilişkilerini değiştirmez.
 
 ## Kullanım ve katkı
 
