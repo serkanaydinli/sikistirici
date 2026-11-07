@@ -9,7 +9,7 @@ Geliştirici: **Serkan Aydınlı**.
 
 Apple Silicon · macOS 14+ · Uygulama build 11. PKG, uygulama ZIP'i, kaynak ZIP'i ve SHA-256 listesi sürüm eklerindedir.
 
-**Sınırlar:** Eski 0.4.5 sürümünün ayrı geçici önizleme klasörleri, hâlâ çalışan eski bir uygulamanın verilerini silmemek için otomatik temizlenmez. Native arşiv okumasındaki süre kontrolü libarchive çağrısını her noktada kesebilen bir kesin zaman aşımı değildir; ek okuma/metadata bütçeleri riski sınırlar. Bu değişiklikler bir güvenlik garantisi değildir.
+**Sınırlar:** İşaretsiz geçici önizleme klasörleri, çalışan bir oturuma zarar vermemek için otomatik temizlenmez. Native arşiv okumasındaki süre kontrolü libarchive çağrısını her noktada kesebilen bir kesin zaman aşımı değildir; ek okuma/metadata bütçeleri riski sınırlar. Bu değişiklikler bir güvenlik garantisi değildir.
 
 Uygulama ad-hoc imzalıdır; PKG Developer ID Installer ile imzalanmamıştır ve Apple noter onayı yoktur. Sertifika olmadan bu dağıtım eksikliği giderilemedi.
 

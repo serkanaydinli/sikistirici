@@ -14,7 +14,7 @@ Apple Silicon · macOS 14+ · SwiftUI · ZIP / 7z / RAR
 
 ## 0.4.6 güvenlik güncellemesi
 
-Önizleme için 4 KiB tek ad, 4 MiB toplam ad ve 64 MiB okuma bütçeleri eklendi. Geçici düz metin önizlemeler özel 0700 dizinlerinde tutulur; yeni sürümün çökme kalıntıları sonraki açılışta temizlenir. Dağıtım dosyalarındaki kişisel derleme yolları kaldırıldı. Eski 0.4.5 yerine bu sürümü kullanın. [Doğrulama ve sınırlar](docs/SECURITY_046.md).
+Önizleme için 4 KiB tek ad, 4 MiB toplam ad ve 64 MiB okuma bütçeleri eklendi. Geçici düz metin önizlemeler özel 0700 dizinlerinde tutulur; yeni sürümün çökme kalıntıları sonraki açılışta temizlenir. Dağıtım dosyalarındaki kişisel derleme yolları kaldırıldı. [Doğrulama ve sınırlar](docs/SECURITY_046.md).
 
 ## Neler yapar?
 

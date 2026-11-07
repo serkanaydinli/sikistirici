@@ -13,7 +13,7 @@
 
 Dosyaları pencereye sürükleyebilirsin. Tek arşiv açılır; birden çok arşiv toplu çıkarma ekranını açar. Diğer dosyalar yeni arşiv hazırlığına eklenir.
 
-## 0.4.4: inceleme düzeltmeleri
+## Dosya koruması ve işlem güvenliği
 
 - Çıkarma hedefleri önceden denetlenir. Hata veya iptalde yeni dosyalar kaldırılır, üzerine yazılan eski dosyalar geri getirilir. Geri alma tamamlanamazsa kurtarma yedekleri saklanır ve konumu gösterilir. Normal çıkış, çalışan işlerin iptal/geri alma işlemlerinin bitmesini bekler. Ani güç kesintisi veya zorla sonlandırma için otomatik oturum kurtarma garantisi yoktur.
 - Oluşturma kaynak adlarını okuyucuyla aynı kurallara göre kontrol eder; yeni arşiv yayımlanmadan listeleme ve bütünlük testinden geçer.
@@ -23,23 +23,23 @@ Dosyaları pencereye sürükleyebilirsin. Tek arşiv açılır; birden çok arş
 - Seçili dosya çıkarma ve önizleme alan hesabı seçimin boyutuna göre yapılır; bütün arşivin güvenlik denetimi sürer.
 - Ana uygulama, motor ve uzantılar Hardened Runtime ile imzalanır. Yerel imza Apple noter onayı değildir. Developer ID ile derleme ve noter gönderimi için [dağıtım yönergesi](DISTRIBUTION.md) eklendi.
 
-## 0.4.3: görsel düzen
+## Görsel düzen
 
 Açık temada daha okunaklı koyu turuncu, koyu temada sıcak turuncu vurgu kullanılır. Karşılama ekranında büyük maskot, iki hızlı işlem ve dosya bırakma alanı; yan çubukta simge zeminleri ve üzerine gelme vurguları bulunur. Dosya listesi ile ayrıntı paneli ayrı yüzeylerdir. Tür dağılımına küçük boyut çubukları eklendi. Boş işlem kuyruğu tek satırlık Hazır durumuna indirildi; işler varken ayrıntılı kuyruk görünür.
 
-## 0.4.2: Uygulamalar simgesi
+## Uygulamalar simgesi
 
 Uygulamalar/Finder simgesi için dış çerçevesi kaldırılmış, maskotu daha büyük yeni LauncherIcon kullanılır. Uygulama içi maskot orijinal AppIcon görselini kullanmaya devam eder.
 
-## 0.4.1: büyük logo, görünüm ve hızlı işlemler
+## Logo, görünüm ve hızlı işlemler
 
-Karşılama maskotu 220 pt, yan çubuk maskotu 64 pt, yeni arşiv maskotu 76 pt olarak büyütüldü. Karşılama ekranı yatay yerleşim ve sıcak turuncu vurgularla yenilendi; kısa pencerelerde kaydırılabilir. Önceki logo animasyonları ve Hareketi azalt desteği korunur.
+Karşılama maskotu 220 pt, yan çubuk maskotu 64 pt ve yeni arşiv maskotu 76 pt boyutundadır. Karşılama ekranı yatay yerleşim ve sıcak turuncu vurgu kullanır; kısa pencerelerde kaydırılabilir. Logo animasyonları Hareketi azalt ayarını destekler.
 
 Yan çubuğun altındaki **Sistem / Açık / Koyu** görünüm seçimi uygulamaya özeldir ve yeniden açılışta korunur. Son açılan arşive sağ tıklayarak Finder’da gösterebilir veya **Geçmişten kaldır** seçebilirsin. Başlığın yanındaki üç nokta bütün geçmiş listesini temizler; arşiv dosyalarını silmez veya açık arşivi kapatmaz. Uzun geçmiş listesi yan çubuk içinde kaydırılır.
 
 Karşılama kartları artık düğmedir: **Hızlı bakış** arşiv seçimini, **Toplu işlem** toplu işlem ekranını, **Yeni paket** arşiv oluşturma ekranını açar.
 
-## 0.4: dosya tarayıcısı ve analiz
+## Dosya tarayıcısı ve analiz
 
 - **Arama ve tür filtresi:** bütün arşivde birlikte uygulanır. Belgeler, görseller, video/ses, arşivler ve diğer dosyalar uzantıya göre sınıflandırılır. Arama ve filtre değişince önceki seçim temizlenir. Klasör gezintisinde üstteki yol menüsünden doğrudan bir üst seviyeye geçebilirsin.
 - **Sıralama:** ok menüsünden ad, büyükten küçüğe, küçükten büyüğe veya tür seç. Klasörler önce gelir. Sıralama arşiv içeriğini değiştirmez.
@@ -48,17 +48,17 @@ Karşılama kartları artık düğmedir: **Hızlı bakış** arşiv seçimini, *
 - **Seçim ayrıntıları:** çoklu seçim ve klasörlerde içerideki dosyaların toplamını gösterir; aynı dosyayı iki kez saymaz. Seçili yolları sağ tık menüsünden kopyalayabilirsin.
 - **Görünüm:** sade liste, dosya türü simgeleri, sonuçlarda klasör yolu, yenilenen karşılama kartları ve açılıp kapanabilen ayrıntı paneli. Panel tercihi yerel olarak saklanır.
 
-Bu sürüm arama sonrasında kalan görünmez seçimi, çoklu seçimde tek dosya ayrıntısı gösterilmesini ve arşiv kapatıldığında kalan parola isteğini düzeltir. Açılamamış arşivlerde düzenleme/çıkarma/doğrulama devre dışıdır. Motorun bildirmediği sıkıştırılmış dosya boyutu sıfır yerine çizgiyle gösterilir.
+Açılamamış arşivlerde düzenleme/çıkarma/doğrulama devre dışıdır. Motorun bildirmediği sıkıştırılmış dosya boyutu sıfır yerine çizgiyle gösterilir.
 
-## 0.3: dosya adı kodlaması
+## Dosya adı kodlaması
 
-0.3.1, otomatik açılışta 7zz tarafından çözülemeyen ZIP adı baytlarını algılar. Önce UTF-8, ardından Türkçe Windows-1254 ve CP857 adayları kontrol edilir. Türkçe harf içeren uygun aday bir tahmin olarak seçilir; içerik listesindeki bildirim kullanılan kodlamayı gösterir. Evrensel kodlama tespiti değildir; tahmin yanlışsa elle değiştirilebilir. Seçim listeleme ve çıkarma boyunca tutarlı tutulur.
+Otomatik açılışta 7zz tarafından çözülemeyen ZIP adı baytlarını algılar. Önce UTF-8, ardından Türkçe Windows-1254 ve CP857 adayları kontrol edilir. Türkçe harf içeren uygun aday bir tahmin olarak seçilir; içerik listesindeki bildirim kullanılan kodlamayı gösterir. Evrensel kodlama tespiti değildir; tahmin yanlışsa elle değiştirilebilir. Seçim listeleme ve çıkarma boyunca tutarlı tutulur.
 
 ZIP açıkken içerik listesindeki **Kodlama** düğmesini veya Arşiv menüsündeki aynı seçeneği kullan. Otomatik, Türkçe Windows-1254, Türkçe DOS CP857 ve UTF-8 seçenekleri var. Önizlemede adları kontrol edip **Bu kodlamayı kullan** seç. Asıl arşiv değişmez; o oturumdaki listeleme, seçerek çıkarma, uygulama içi önizleme, doğrulama ve düzenleme aynı seçimi kullanır. Başka bir arşiv açınca seçim Otomatik olur; kuyruğa alınmış işler kendi seçimini korur.
 
 Elle seçim yalnız tek parçalı `.zip` içindir. Bu yol paketlenmiş libarchive ile okur; UTF-8 bayraklı dosya adları korunur. ZIP kaydındaki yanlış bir Unicode etiketi veya önceden bozulup kaydedilmiş her ad düzeltilemez. Finder'ın boşluk tuşuyla önizlemesi otomatik okumayı sürdürür; elle seçim uygulama içindedir. Düzenlenen ZIP yeniden oluşturulurken adlar Unicode olarak yazılır; sonraki açılışta Otomatik kullanılabilir.
 
-## 0.3: özel profiller ve filtreler
+## Özel profiller ve filtreler
 
 **Yeni arşiv → Profili kaydet ve yönet** bölümünde ad verip kaydet. Biçim, sıkıştırma düzeyi, Mac metadata temizliği, parça boyutu, çıktı klasörü ve filtreler yerel tercihlerde tutulur. Seçili profili güncelleyebilir veya silebilirsin. Parola ve parolayla koruma tercihi profile kaydedilmez; gerektiğinde her işlemde yeniden seçilir. En fazla 100 profil saklanır. Profiller bu sürümde Yeni arşiv ekranında kullanılır; toplu işlem ayarları ayrıdır.
 
@@ -66,7 +66,7 @@ Elle seçim yalnız tek parçalı `.zip` içindir. Bu yol paketlenmiş libarchiv
 
 **Eklenecekleri önizle** dahil edilen/dışlanan dosyaları ve toplamları gösterir. Görüntülenen listeler sınırlıdır; toplamlar bütün taramayı kapsar. Kaynaklar işlem başında yeniden taranır. Filtreli oluşturma yalnız eşleşen dosyaları özel bir geçici klasöre kopyalar; kaynakları silmez. Klasör yapısı ve Unix izinleri korunur; boş klasörler eklenmez. Ek geçici disk alanı gerekir. Kaynak taraması en fazla 100.000 girdi, filtreli geçici içerik varsayılan olarak 20 GiB ile sınırlıdır. Kaynakların başlık/metadata alanları normal oluşturma yolunun sınırlarına tabidir.
 
-## 0.3: geri al / yeniden yap
+## Geri al / yeniden yap
 
 Arşive ekleme, silme ve yeniden adlandırma taslağında **⌘Z / ⇧⌘Z**, içerik listesinin altındaki oklar veya Bekleyen değişiklikler ekranındaki düğmeler kullanılabilir. Metin alanında odak varken standart metin geri alma çalışır. **Tümünü bırak** işlemi de aynı oturumda geri alınabilir. En fazla 100 düzenleme adımı tutulur.
 
@@ -87,6 +87,8 @@ Tek parçalı ZIP/7z açıkken **+** ile dosya ekle. Dosya listesinin sağ tık 
 - **Tümünü bırak:** bekleyen değişiklikleri siler; asıl arşiv korunur.
 
 Kaydetmeden başka arşive geçme/kapatma sırasında uyarı gösterilir. Parolalı 7z aynı parola ile korunur. Parolalı ZIP düzenleme bu sürümde desteklenmez. Arşivin tamamı yeniden oluşturulduğundan büyük arşivlerde zaman ve ek alan gerekir. Özgün sıkıştırma yöntemi, arşiv yorumu ve tüm özel format metadata alanları korunacağı garanti edilmez; bu sürüm dosya içeriği ve yollarını düzenlemeye yöneliktir. Unix dosya/klasör izinleri korunur; mevcut hedef klasörün izinleri değiştirilmez.
+
+Önizlemede tek dosya adı 4 KiB, toplam ad verisi 4 MiB ve okuma bütçesi 64 MiB ile sınırlıdır. Geçici düz metin kopyaları özel 0700 oturum dizinlerinde tutulur; kilidi bırakılmış oturumlar sonraki açılışta temizlenir.
 
 ## Finder ve önizleme
 
@@ -117,6 +119,6 @@ swift test --disable-sandbox
 
 `SIKISTIRICI_BUILD_DIR` ve `SIKISTIRICI_APP_PATH` çıktı konumlarını değiştirebilir. Betik Swift uygulamayı ve native uzantıları derler, resmi 7zz motorunu/lisansını paketler, içten dışa Hardened Runtime ile imzalar ve doğrular. Hazır paket arm64'tür.
 
-88 otomatik test geçiyor (22 yeni regresyon testi dahil): eski Türkçe ZIP kodlamaları, kodlamalı parolalı ZIP/CRC hatası, filtre sonuçları, profil kalıcılığı, geri alma ve kuyruk oturumu dahil; ZIP/7z gidiş-dönüşü, parolalar, parçalı arşiv, eksik parça, disk alanı, aktif iptal, dosya adı/yol koruması, çakışmalar, düzenleme, klasör izinleri ve oturum değişimleri. Resmi libarchive RAR4/RAR5 şifreli, sıkıştırılmış ve çok parçalı solid örnekleri kullanıldı; kaynak commit, SHA-256 ve lisans `Tests/ArchiveCoreTests/Fixtures` içindedir. Tüm RAR çeşitleri veya bütün macOS sürümleri için uyumluluk iddiası yoktur.
+100 otomatik test geçiyor: eski Türkçe ZIP kodlamaları, kodlamalı parolalı ZIP/CRC hatası, filtre sonuçları, profil kalıcılığı, geri alma ve kuyruk oturumu dahil; ZIP/7z gidiş-dönüşü, parolalar, parçalı arşiv, eksik parça, disk alanı, aktif iptal, dosya adı/yol koruması, çakışmalar, düzenleme, klasör izinleri ve oturum değişimleri. Resmi libarchive RAR4/RAR5 şifreli, sıkıştırılmış ve çok parçalı solid örnekleri kullanıldı; kaynak commit, SHA-256 ve lisans `Tests/ArchiveCoreTests/Fixtures` içindedir. Tüm RAR çeşitleri veya bütün macOS sürümleri için uyumluluk iddiası yoktur.
 
 Motor: resmi 7-Zip 26.04. Telif, LGPL/BSD ve unRAR koşulları [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) ve `7-Zip-License.txt` içinde.

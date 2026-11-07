@@ -1,8 +1,8 @@
 # İmzalama ve Apple noter onayı
 
-0.4.4 derleme betiği uygulama, 7zz ve iki uzantı için Hardened Runtime açar. Varsayılan yerel ad hoc imza Apple Developer ID veya noter onayı değildir.
+Derleme betiği uygulama, 7zz ve iki uzantı için Hardened Runtime açar. Varsayılan yerel ad hoc imza Apple Developer ID veya noter onayı değildir.
 
-22 Ekim 2026 yerel kontrolde `security find-identity -v -p codesigning` sıfır geçerli kimlik döndürdü. Dolayısıyla bu makinede Developer ID imzalama ve noter gönderimi doğrulanamadı. Kullanıcı Apple Developer hesabından Developer ID Application sertifikasını Anahtar Zinciri'ne eklemeli ve `xcrun notarytool store-credentials` ile kendi oturumunda bir profil hazırlamalı. Parolayı sohbet veya betik içine yazmamalı.
+Yerel kontrolde `security find-identity -v -p codesigning` sıfır geçerli kimlik döndürdü. Dolayısıyla bu makinede Developer ID imzalama ve noter gönderimi doğrulanamadı. Kullanıcı Apple Developer hesabından Developer ID Application sertifikasını Anahtar Zinciri'ne eklemeli ve `xcrun notarytool store-credentials` ile kendi oturumunda bir profil hazırlamalı. Parolayı sohbet veya betik içine yazmamalı.
 
 Kimlik hazır olduğunda:
 

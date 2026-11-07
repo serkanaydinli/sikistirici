@@ -17,6 +17,6 @@ Birleşik test paketi **100 test, 0 hata** ile geçti (12 yeni test). Önceki ko
 
 Libarchive içinde çalışmakta olan tek bir çağrı her noktada dışarıdan kesilemez; mutlak CPU/bellek izolasyonu veya kesin duvar saati garantisi verilmez. Büyük/sıkıştırılmış bazı arşivler önizleme bütçesine takılabilir; uygulamadaki normal arşiv işlemleri ayrı sınırlar kullanır.
 
-Çökmüş yeni oturumların temizliği sonraki açılışta gerçekleşir; anlık veya güvenli disk silme garantisi yoktur. Eski 0.4.5 sürümünün işaretsiz `SikistiriciPreview-UUID` klasörleri, çalışan eski bir oturuma zarar vermemek için otomatik kaldırılmaz.
+Çökmüş yeni oturumların temizliği sonraki açılışta gerçekleşir; anlık veya güvenli disk silme garantisi yoktur. İşaretsiz `SikistiriciPreview-UUID` klasörleri, çalışan bir oturuma zarar vermemek için otomatik kaldırılmaz.
 
 Uygulama yerel ad-hoc imzalıdır; PKG Developer ID Installer ile imzalanmamış ve Apple tarafından noter onayı almamıştır. Bu dağıtım güveni eksikliği sertifika olmadan giderilemedi. Güvenlik incelemesi, tüm olası açıkların yokluğunu kanıtlamaz.
