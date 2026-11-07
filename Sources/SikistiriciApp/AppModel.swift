@@ -91,6 +91,7 @@ final class AppModel: ObservableObject {
     private var browseToken = UUID()
     private var previewControl: OperationControl?
     private var previewRoot: URL?
+    private var previewStore: PreviewTemporaryStore?
     private var previewToken = UUID()
     private var inFlightOperations = 0
     private var terminating = false
@@ -113,6 +114,8 @@ final class AppModel: ObservableObject {
     }
     init(preferences: UserDefaults = .standard) {
         self.preferences = preferences
+        do { previewStore = try PreviewTemporaryStore() }
+        catch { errorMessage = "Özel önizleme alanı hazırlanamadı: " + error.localizedDescription }
         // SwiftUI command enablement must follow the native field editor's undo stack too.
         let notifications: [Notification.Name] = [NSText.didBeginEditingNotification, NSText.didEndEditingNotification,
             NSText.didChangeNotification, Notification.Name.NSUndoManagerDidCloseUndoGroup,
@@ -378,7 +381,13 @@ final class AppModel: ObservableObject {
     private func startPreview(archive: URL, path: String, password: String?, encoding: FilenameEncoding) {
         previewControl?.cancel(); let control = OperationControl(); previewControl = control
         let token = UUID(); previewToken = token
-        let root = FileManager.default.temporaryDirectory.appendingPathComponent("SikistiriciPreview-\(UUID())")
+        guard let store = previewStore else {
+            errorMessage = "Özel önizleme alanı kullanılamıyor. Uygulamayı yeniden açın."
+            return
+        }
+        let root: URL
+        do { root = try store.makePreviewDirectory() }
+        catch { errorMessage = "Özel önizleme alanı hazırlanamadı: " + error.localizedDescription; return }
         let engine = self.engine
         previewLoading = true
         inFlightOperations += 1
@@ -386,12 +395,14 @@ final class AppModel: ObservableObject {
             do {
                 _ = try engine.extract(archive, destination: root, selected: [path], password: password, control: control, encoding:encoding)
                 await self?.didPreview(root: root, path: path, token: token)
-            } catch { try? FileManager.default.removeItem(at: root); await self?.failedPreview(error, token: token, archive: archive, path: path, password: password, encoding: encoding) }
+            } catch { store.removePreview(root); await self?.failedPreview(error, token: token, archive: archive, path: path, password: password, encoding: encoding) }
+            // Keep the session lock alive even if the model was deallocated.
+            withExtendedLifetime(store) {}
             await self?.operationFinished()
         }
     }
     private func didPreview(root: URL, path: String, token: UUID) {
-        guard token == previewToken else { try? FileManager.default.removeItem(at: root); return }
+        guard token == previewToken else { previewStore?.removePreview(root); return }
         closePreview(); previewRoot = root; previewURL = root.appendingPathComponent(path); previewLoading = false; showingPreview = true
     }
     private func failedPreview(_ error: Error, token: UUID, archive: URL, path: String, password: String?, encoding: FilenameEncoding) {
@@ -403,7 +414,7 @@ final class AppModel: ObservableObject {
         }), error as? ArchiveFailure != .cancelled { errorMessage = error.localizedDescription }
     }
     func closePreview() {
-        if let root = previewRoot { try? FileManager.default.removeItem(at: root) }
+        if let root = previewRoot { previewStore?.removePreview(root) }
         previewRoot = nil; previewURL = nil
     }
     private func invalidatePreview() {

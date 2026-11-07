@@ -125,7 +125,7 @@ struct MainWindow: View {
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.primary)
                     .fixedSize(horizontal: false, vertical: true)
-                Text("Açık kaynak · MIT · 0.4.5")
+                Text("Açık kaynak · MIT · 0.4.6")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }.padding(.top, 12)

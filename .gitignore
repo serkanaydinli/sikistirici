@@ -21,3 +21,14 @@ xcuserdata/
 # Local implementation notes, not part of the public project.
 IMPLEMENTATION_PLAN.md
 docs/*_PLAN.md
+
+# Local credentials and tool state, never public source.
+*.pem
+*.key
+*.keystore
+*.jks
+.ssh/
+.aws/
+.codex/
+.claude/
+.envrc

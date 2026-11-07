@@ -1,24 +1,23 @@
-# 0.4.5 beta
+# 0.4.6 beta — güvenlik ve gizlilik düzeltmeleri
 
 Geliştirici: **Serkan Aydınlı**.
 
-- Uygulamanın alt bölümüne geliştirici adı ve açık kaynak sürüm bilgisi eklendi.
-- Özgün proje kodu, belgeler ve maskot görselleri MIT lisansı ile paylaşılmaya hazırlandı.
-- Üçüncü taraf bildirimleri korundu; 7-Zip'in eşleşen kaynak arşivi ve tam LGPL metni hem depoya hem uygulama paketine eklendi.
-- Bağımsız depo düzeni için derleme çıktıları `dist/` ve `.build/package/` altına taşındı; Git dışlama kuralları, kullanım ve katkı rehberleri eklendi.
-- 0.4.4'teki parola tekrarları, boyut sınırı, zaman damgaları, seçili içerik bütçesi ve hata/iptal sonrası geri alma düzeltmeleri korundu.
+- Yerel arşiv önizlemesinde tek dosya adı, toplam metadata ve okuma bütçeleri eklendi; sınırı aşan arşivler önizlemede reddedilir.
+- Dosya önizlemeleri yalnız kullanıcıya açık geçici oturum dizinlerinde tutulur. Sonraki açılışta önceki çökmelerden kalan sahipsiz oturumlar temizlenir; başka çalışan oturumlara dokunulmaz.
+- Dağıtılan çalıştırılabilir dosyalardan kişisel kaynak/derleme yolları kaldırıldı. Paketleme bu yollar kalırsa durur; imzalar temizlemeden sonra uygulanır.
+- Ek gizli anahtar dışlama kuralları ve değerleri maskeleyen, salt okuma yetkili Gitleaks iş akışı eklendi.
 
-Paket: Apple Silicon, macOS 14+. Yerel ad-hoc imzalı beta; Apple Developer ID/notarization onayı yoktur. Uygulama sürümü 0.4.5, build 10.
+Apple Silicon · macOS 14+ · Uygulama build 11. PKG, uygulama ZIP'i, kaynak ZIP'i ve SHA-256 listesi sürüm eklerindedir.
 
-Logo ve geliştirici bilgisi içeren macOS `.pkg` kurulum dosyası da eklendi. Uygulamayı `/Applications` klasörüne kurar; Apple Silicon ve macOS 14+ gerektirir. Kurulum öncesinde uygulamayı kapatın. PKG, Developer ID Installer ile imzalanmamıştır.
+**Sınırlar:** Eski 0.4.5 sürümünün ayrı geçici önizleme klasörleri, hâlâ çalışan eski bir uygulamanın verilerini silmemek için otomatik temizlenmez. Native arşiv okumasındaki süre kontrolü libarchive çağrısını her noktada kesebilen bir kesin zaman aşımı değildir; ek okuma/metadata bütçeleri riski sınırlar. Bu değişiklikler bir güvenlik garantisi değildir.
 
-Yayın dosyaları: `Sikistirici-0.4.5-macOS-arm64.pkg`, `Sikistirici-0.4.5-macOS-arm64.zip`, `Sikistirici-0.4.5-source.zip` ve `SHA256SUMS-0.4.5.txt`.
+Uygulama ad-hoc imzalıdır; PKG Developer ID Installer ile imzalanmamıştır ve Apple noter onayı yoktur. Sertifika olmadan bu dağıtım eksikliği giderilemedi.
 
 ## macOS “Açılmadı” uyarısı
 
 Bu beta sürümün PKG kurulum dosyası Developer ID Installer ile imzalanmamıştır; uygulama yerel ad-hoc imzalıdır ve Apple noter onayı yoktur. Bu nedenle GitHub'dan indirilen dosya açılırken “Apple, kötü amaçlı bir yazılım içermediğini doğrulayamadı” uyarısı görülebilir. Bu mesaj zararlı yazılım tespit edildiği anlamına gelmez; güvenli olduğunun garantisi de değildir.
 
-Dosyayı [bu deponun resmi sürüm sayfasından](https://github.com/serkanaydinli/sikistirici/releases/tag/v0.4.5) indirdiyseniz ve çalıştırmayı seçiyorsanız:
+Dosyayı [bu deponun resmi sürüm sayfasından](https://github.com/serkanaydinli/sikistirici/releases/tag/v0.4.6) indirdiyseniz ve çalıştırmayı seçiyorsanız:
 
 1. Uyarıdaki **Bitti** düğmesine basın.
 2. **Sistem Ayarları → Gizlilik ve Güvenlik** bölümünü açın.

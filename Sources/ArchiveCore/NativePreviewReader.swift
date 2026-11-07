@@ -15,7 +15,7 @@ public enum NativePreviewReader {
         let context = PreviewContext(control:control)
         let pointer = Unmanaged.passUnretained(context).toOpaque()
         var message = [CChar](repeating:0,count:1024)
-        let status = sa_preview_list(url.path,100_000,{ path,size,directory,link,encrypted,opaque in
+        let status = sa_preview_list_bounded(url.path,100_000,4096,4 * 1024 * 1024,64 * 1024 * 1024,{ path,size,directory,link,encrypted,opaque in
             guard let opaque, let path else { return 0 }
             let context = Unmanaged<PreviewContext>.fromOpaque(opaque).takeUnretainedValue()
             do {
@@ -23,12 +23,23 @@ public enum NativePreviewReader {
                 guard Date() < context.deadline else { throw ArchiveFailure.limit("Önizleme süre sınırına ulaştı. Arşivi Sıkıştırıcı’da aç.") }
                 var name = String(cString:path)
                 while name.hasSuffix("/") { name.removeLast() }
-                context.entries.append(ArchiveEntry(path:name,size:max(0,size),isDirectory:directory != 0,isLink:link != 0,encrypted:encrypted != 0))
+                let entry = ArchiveEntry(path:name,size:max(0,size),isDirectory:directory != 0,isLink:link != 0,encrypted:encrypted != 0)
+                try SafetyPolicy().validate([entry])
+                context.entries.append(entry)
+                return 1
+            } catch { context.error = error; return 0 }
+        },{ opaque in
+            guard let opaque else { return 0 }
+            let context = Unmanaged<PreviewContext>.fromOpaque(opaque).takeUnretainedValue()
+            do {
+                try context.control.check()
+                guard Date() < context.deadline else { throw ArchiveFailure.limit("Önizleme süre sınırına ulaştı. Arşivi Sıkıştırıcı’da aç.") }
                 return 1
             } catch { context.error = error; return 0 }
         },pointer,&message,message.count)
         if let error = context.error { throw error }
         guard status == 0 else {
+            if status == -4 { throw ArchiveFailure.limit("Önizleme metadata veya okuma sınırına ulaştı. Arşivi Sıkıştırıcı’da aç.") }
             if status == -3 { throw ArchiveFailure.limit("Arşivde 100.000’den fazla girdi var.") }
             let message = String(cString:message)
             if message.localizedCaseInsensitiveContains("encrypt") || message.localizedCaseInsensitiveContains("passphrase") || message.localizedCaseInsensitiveContains("password") { throw ArchiveFailure.passwordRequired }

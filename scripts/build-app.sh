@@ -14,6 +14,9 @@ swift build --disable-sandbox -c release --package-path "$project_root" --scratc
 binary_path="$(swift build --disable-sandbox -c release --show-bin-path --package-path "$project_root" --scratch-path "$build_root/swift-build" --cache-path "$build_root/spm-cache")/Sikistirici"
 mkdir -p "$app_path/Contents/MacOS" "$app_path/Contents/Resources"
 cp "$binary_path" "$app_path/Contents/MacOS/Sikistirici"
+# Remove linker debug records containing the developer's absolute source paths.
+# Always strip before signing, never mutate a signed release afterward.
+xcrun strip -S "$app_path/Contents/MacOS/Sikistirici"
 cp "$project_root/packaging/Info.plist" "$app_path/Contents/Info.plist"
 cp "$project_root/Sources/SikistiriciApp/Resources/"* "$app_path/Contents/Resources/"
 cp "$project_root/LICENSE" "$app_path/Contents/Resources/Sikistirici-LICENSE.txt"
@@ -49,8 +52,11 @@ for kind in Finder Preview; do
         cp "$project_root/Vendor/libarchive/COPYING" "$extension/Contents/Resources/libarchive-COPYING"
         rm -f "$extension/Contents/MacOS/7zz" "$extension/Contents/Resources/7zz"
     fi
+    xcrun strip -S "$extension/Contents/MacOS/Sikistirici${kind}"
     codesign "${signing_options[@]}" --entitlements "$project_root/packaging/${kind}.entitlements" "$extension"
 done
+# Fail closed if source/build paths remain in any shipped executable.
+/usr/bin/swift "$project_root/scripts/check-release-privacy.swift" "$app_path"
 codesign "${signing_options[@]}" "$app_path"
 codesign --verify --deep --strict "$app_path"
 printf 'Uygulama hazır: %s\n' "$app_path"

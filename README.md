@@ -4,13 +4,17 @@
 
 **Az yer. Çok iş.** Türkçe, yerel çalışan, açık kaynak macOS arşiv uygulaması.
 
-**Geliştirici: Serkan Aydınlı** · **0.4.5 beta** · **MIT**
+**Geliştirici: Serkan Aydınlı** · **0.4.6 beta** · **MIT**
 
-[**macOS kurulum dosyasını indir ↓**](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.5/Sikistirici-0.4.5-macOS-arm64.pkg) · [ZIP indir](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.5/Sikistirici-0.4.5-macOS-arm64.zip) · [Tüm sürümler](https://github.com/serkanaydinli/sikistirici/releases) · [Hata bildir](https://github.com/serkanaydinli/sikistirici/issues)
+[**macOS kurulum dosyasını indir ↓**](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.6/Sikistirici-0.4.6-macOS-arm64.pkg) · [ZIP indir](https://github.com/serkanaydinli/sikistirici/releases/download/v0.4.6/Sikistirici-0.4.6-macOS-arm64.zip) · [Tüm sürümler](https://github.com/serkanaydinli/sikistirici/releases) · [Hata bildir](https://github.com/serkanaydinli/sikistirici/issues)
 
 Apple Silicon · macOS 14+ · SwiftUI · ZIP / 7z / RAR
 
 ![Sıkıştırıcı ana ekranı](docs/images/sikistirici.png)
+
+## 0.4.6 güvenlik güncellemesi
+
+Önizleme için 4 KiB tek ad, 4 MiB toplam ad ve 64 MiB okuma bütçeleri eklendi. Geçici düz metin önizlemeler özel 0700 dizinlerinde tutulur; yeni sürümün çökme kalıntıları sonraki açılışta temizlenir. Dağıtım dosyalarındaki kişisel derleme yolları kaldırıldı. Eski 0.4.5 yerine bu sürümü kullanın. [Doğrulama ve sınırlar](docs/SECURITY_046.md).
 
 ## Neler yapar?
 
@@ -38,7 +42,7 @@ Dosya işlemleri Mac üzerinde yapılır. Bulut hesabı gerekmez. RAR oluşturul
 
 Bu beta sürümün PKG kurulum dosyası Developer ID Installer ile imzalanmamıştır; uygulama yerel ad-hoc imzalıdır ve Apple noter onayı yoktur. Bu nedenle GitHub'dan indirilen dosya açılırken “Apple, kötü amaçlı bir yazılım içermediğini doğrulayamadı” uyarısı görülebilir. Bu mesaj zararlı yazılım tespit edildiği anlamına gelmez; güvenli olduğunun garantisi de değildir.
 
-Dosyayı [bu deponun resmi sürüm sayfasından](https://github.com/serkanaydinli/sikistirici/releases/tag/v0.4.5) indirdiyseniz ve çalıştırmayı seçiyorsanız:
+Dosyayı [bu deponun resmi sürüm sayfasından](https://github.com/serkanaydinli/sikistirici/releases/tag/v0.4.6) indirdiyseniz ve çalıştırmayı seçiyorsanız:
 
 1. Uyarıdaki **Bitti** düğmesine basın.
 2. **Sistem Ayarları → Gizlilik ve Güvenlik** bölümünü açın.
@@ -76,9 +80,9 @@ Betik macOS'un `pkgbuild`/`productbuild` araçlarını kullanır. Oluşan imzas�
 
 ## Kullanım ve katkı
 
-[Kullanım kılavuzu](docs/USER_GUIDE.md) · [Katkı rehberi](CONTRIBUTING.md) · [0.4.5 sürüm notları](docs/RELEASE_NOTES.md)
+[Kullanım kılavuzu](docs/USER_GUIDE.md) · [Katkı rehberi](CONTRIBUTING.md) · [0.4.6 sürüm notları](docs/RELEASE_NOTES.md)
 
-Test paketi 88 test içerir: arşiv gidiş-dönüşü, şifreler, Türkçe adlar, dosya tarihleri, güvenli yollar, parçalı arşivler, iptal ve hata sonrası geri alma. Bütün arşiv biçimleri ve macOS sürümleri için uyumluluk garantisi verilmez. Varsayılan açılmış boyut sınırı 20 GiB'dır; uygulamada değiştirilebilir. Zorla sonlandırma veya elektrik kesilmesinden sonra otomatik kurtarma yoktur.
+Test paketi 100 test içerir: arşiv gidiş-dönüşü, şifreler, Türkçe adlar, dosya tarihleri, güvenli yollar, parçalı arşivler, iptal ve hata sonrası geri alma. Bütün arşiv biçimleri ve macOS sürümleri için uyumluluk garantisi verilmez. Varsayılan açılmış boyut sınırı 20 GiB'dır; uygulamada değiştirilebilir. Zorla sonlandırma veya elektrik kesilmesinden sonra otomatik kurtarma yoktur.
 
 ## Lisans ve geliştirici
 
